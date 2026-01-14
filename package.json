@@ -1,0 +1,14 @@
+{
+  "name": "gerador-documento-node",
+  "version": "1.0.0",
+  "description": "API para gerar CPF e CNPJ válidos",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "author": "",
+  "license": "ISC"
+}
