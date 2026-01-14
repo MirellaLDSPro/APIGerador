@@ -2,3 +2,4 @@ ConsoleApp1/
 *.sln
 bin/
 obj/
+node_modules/
