@@ -1,9 +1,12 @@
-const express = require('express');
-const app = express();
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const app = (0, express_1.default)();
 const port = 3000;
-
 // Gerador de CPF e CNPJ
-
 function gerarCPF() {
     let cpf = '';
     for (let i = 0; i < 9; i++) {
@@ -13,7 +16,6 @@ function gerarCPF() {
     cpf += calcularDigitoCPF(cpf);
     return cpf;
 }
-
 function calcularDigitoCPF(cpf) {
     let soma = 0;
     let peso = cpf.length + 1;
@@ -23,7 +25,6 @@ function calcularDigitoCPF(cpf) {
     let resto = soma % 11;
     return resto < 2 ? 0 : 11 - resto;
 }
-
 function gerarCNPJ() {
     const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     let cnpj = '';
@@ -50,7 +51,6 @@ function gerarCNPJ() {
     cnpj += dv2;
     return cnpj;
 }
-
 function calcularDigitoCNPJ(cnpj) {
     const pesos = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
     let soma = 0;
@@ -60,7 +60,6 @@ function calcularDigitoCNPJ(cnpj) {
     let resto = soma % 11;
     return resto < 2 ? 0 : 11 - resto;
 }
-
 function gerarCNPJNumerico() {
     let cnpj = '';
     for (let i = 0; i < 8; i++) {
@@ -71,21 +70,16 @@ function gerarCNPJNumerico() {
     cnpj += calcularDigitoCNPJ(cnpj.substring(0, 13));
     return cnpj;
 }
-
 // Endpoints da API
-
 app.get('/cpf', (req, res) => {
     res.json({ cpf: gerarCPF() });
 });
-
 app.get('/cnpj-alfanumerico', (req, res) => {
     res.json({ cnpj: gerarCNPJ() });
 });
-
 app.get('/cnpj-numerico', (req, res) => {
     res.json({ cnpj: gerarCNPJNumerico() });
 });
-
 app.get('/', (req, res) => {
     res.json({
         message: 'API de Geração de Documentos',
@@ -96,7 +90,6 @@ app.get('/', (req, res) => {
         }
     });
 });
-
 app.listen(port, () => {
     console.log(`API rodando em http://localhost:${port}`);
 });

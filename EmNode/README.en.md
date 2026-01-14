@@ -1,12 +1,17 @@
-# Document Generator - Node.js API
+# Document Generator - Node.js API (TypeScript)
 
 This API generates valid CPF and CNPJ numbers.
 
 ## How to use
 
 1. Install dependencies: `npm install`
-2. Start the server: `npm start`
-3. The API will be running on `http://localhost:3000`
+2. Compile TypeScript: `npm run build`
+3. Start the server: `npm start`
+4. The API will be running on `http://localhost:3000`
+
+## Development
+
+For development, use `npm run dev` to compile and run automatically.
 
 ## Endpoints
 
