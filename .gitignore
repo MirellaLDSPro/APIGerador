@@ -1,5 +1,2 @@
-ConsoleApp1/
-*.sln
-bin/
-obj/
+dist/
 node_modules/
