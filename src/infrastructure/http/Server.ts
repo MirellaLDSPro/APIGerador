@@ -54,7 +54,16 @@ export class Server {
     }
 
     /**
+     * Retorna a aplicação Express
+     * Necessário para Vercel e outros serverless environments
+     */
+    public getApp(): Express {
+        return this.app;
+    }
+
+    /**
      * Inicia o servidor
+     * Usado apenas em desenvolvimento local
      */
     public start(): void {
         this.app.listen(this.port, () => {
