@@ -8,15 +8,16 @@ interface DocumentCardProps {
     label: string
     loading: boolean
   }
+  rawValue: string
   onGenerate: () => void
 }
 
-export default function DocumentCard({ document, onGenerate }: DocumentCardProps) {
+export default function DocumentCard({ document, rawValue, onGenerate }: DocumentCardProps) {
   const [copied, setCopied] = useState(false)
 
   const handleCopy = () => {
-    if (document.value) {
-      navigator.clipboard.writeText(document.value)
+    if (rawValue) {
+      navigator.clipboard.writeText(rawValue)
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
     }
