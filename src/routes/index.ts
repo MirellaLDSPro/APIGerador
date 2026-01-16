@@ -4,29 +4,29 @@ import { gerarCPF, gerarCNPJ, gerarCNPJNumerico } from '../services/documentGene
 const router = express.Router();
 
 // Rota raiz - informações da API
-router.get('/', (req: Request, res: Response) => {
+router.get('/api', (req: Request, res: Response) => {
     res.json({
         message: 'API de Geração de Documentos',
         endpoints: {
-            cpf: '/cpf',
-            cnpjAlfanumerico: '/cnpj-alfanumerico',
-            cnpjNumerico: '/cnpj-numerico'
+            cpf: '/api/cpf',
+            cnpjAlfanumerico: '/api/cnpj-alfanumerico',
+            cnpjNumerico: '/api/cnpj-numerico'
         }
     });
 });
 
 // Rota para gerar CPF
-router.get('/cpf', (req: Request, res: Response) => {
+router.get('/api/cpf', (req: Request, res: Response) => {
     res.json({ cpf: gerarCPF() });
 });
 
 // Rota para gerar CNPJ alfanumérico
-router.get('/cnpj-alfanumerico', (req: Request, res: Response) => {
+router.get('/api/cnpj-alfanumerico', (req: Request, res: Response) => {
     res.json({ cnpj: gerarCNPJ() });
 });
 
 // Rota para gerar CNPJ numérico
-router.get('/cnpj-numerico', (req: Request, res: Response) => {
+router.get('/api/cnpj-numerico', (req: Request, res: Response) => {
     res.json({ cnpj: gerarCNPJNumerico() });
 });
 

@@ -14,19 +14,27 @@
   ],
   "routes": [
     {
-      "src": "/cpf",
+      "src": "/api/cpf",
       "dest": "index.ts"
     },
     {
-      "src": "/cnpj-alfanumerico",
+      "src": "/api/cnpj-alfanumerico",
       "dest": "index.ts"
     },
     {
-      "src": "/cnpj-numerico",
+      "src": "/api/cnpj-numerico",
       "dest": "index.ts"
     },
     {
-      "src": "/.*",
+      "src": "/api",
+      "dest": "index.ts"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "frontend/dist/assets/$1"
+    },
+    {
+      "src": "/(.*)",
       "dest": "frontend/dist/index.html"
     }
   ]

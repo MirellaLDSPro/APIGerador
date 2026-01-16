@@ -40,7 +40,7 @@ export default function DocumentGenerator() {
     try {
       setState(prev => ({ ...prev, loading: true }))
 
-      const response = await fetch(`/${type}`)
+      const response = await fetch(`/api/${type}`)
       const data = await response.json()
 
       setState(prev => ({
