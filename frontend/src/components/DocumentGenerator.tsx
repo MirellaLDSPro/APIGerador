@@ -2,6 +2,17 @@ import { useState } from 'react'
 import DocumentCard from './DocumentCard'
 import './DocumentGenerator.css'
 
+function formatCPF(cpf: string): string {
+  return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4')
+}
+
+function formatCNPJ(cnpj: string): string {
+  if (cnpj.length === 14 && /^\d+$/.test(cnpj)) {
+    return cnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5')
+  }
+  return cnpj.replace(/(.{2})(.{3})(.{3})(.{4})(.{2})/, '$1.$2.$3/$4-$5')
+}
+
 interface Document {
   type: 'cpf' | 'cnpj-alfanumerico' | 'cnpj-numerico'
   value: string
@@ -10,6 +21,8 @@ interface Document {
 }
 
 export default function DocumentGenerator() {
+  const [useMask, setUseMask] = useState(true)
+
   const [cpf, setCpf] = useState<Document>({
     type: 'cpf',
     value: '',
@@ -62,19 +75,41 @@ export default function DocumentGenerator() {
     ])
   }
 
+  const getDisplayValue = (doc: Document): string => {
+    if (!doc.value) return ''
+    if (!useMask) return doc.value
+    
+    if (doc.type === 'cpf') return formatCPF(doc.value)
+    return formatCNPJ(doc.value)
+  }
+
   return (
     <div className="document-generator">
+      <div className="mask-toggle">
+        <label className="toggle-label">
+          <input
+            type="checkbox"
+            checked={useMask}
+            onChange={(e) => setUseMask(e.target.checked)}
+          />
+          <span className="toggle-text">Exibir com máscara</span>
+        </label>
+      </div>
+
       <div className="cards-container">
         <DocumentCard
-          document={cpf}
+          document={{ ...cpf, value: getDisplayValue(cpf) }}
+          rawValue={cpf.value}
           onGenerate={() => generateDocument('cpf')}
         />
         <DocumentCard
-          document={cnpjAlfanumerico}
+          document={{ ...cnpjAlfanumerico, value: getDisplayValue(cnpjAlfanumerico) }}
+          rawValue={cnpjAlfanumerico.value}
           onGenerate={() => generateDocument('cnpj-alfanumerico')}
         />
         <DocumentCard
-          document={cnpjNumerico}
+          document={{ ...cnpjNumerico, value: getDisplayValue(cnpjNumerico) }}
+          rawValue={cnpjNumerico.value}
           onGenerate={() => generateDocument('cnpj-numerico')}
         />
       </div>
