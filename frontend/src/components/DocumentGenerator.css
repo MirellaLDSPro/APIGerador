@@ -1,0 +1,47 @@
+.document-generator {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .cards-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cards-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+.btn-primary {
+  background: white;
+  color: #667eea;
+  padding: 14px 28px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  background: #f0f4ff;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
