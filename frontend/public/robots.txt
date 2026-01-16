@@ -1,0 +1,6 @@
+# Robots.txt para Gerador de Documentos
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://api-gerador.vercel.app/sitemap.xml
