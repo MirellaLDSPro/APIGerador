@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://api-gerador.vercel.app/sitemap.xml
+Sitemap: https://www.apigerador.online/sitemap.xml

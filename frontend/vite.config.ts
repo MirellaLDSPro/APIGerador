@@ -6,15 +6,7 @@ export default defineConfig({
   server: {
     port: 5173,
     proxy: {
-      '/cpf': {
-        target: 'http://localhost:3000',
-        changeOrigin: true
-      },
-      '/cnpj-alfanumerico': {
-        target: 'http://localhost:3000',
-        changeOrigin: true
-      },
-      '/cnpj-numerico': {
+      '/api': {
         target: 'http://localhost:3000',
         changeOrigin: true
       }

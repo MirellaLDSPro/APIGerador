@@ -2,7 +2,7 @@
 
 Aplicação fullstack para gerar CPF e CNPJ válidos, com frontend React e API serverless.
 
-🔗 **Demo**: [Acesse no Vercel](https://api-gerador.vercel.app)
+🔗 **Demo**: [Acesse no Vercel](https://www.apigerador.online)
 
 ## Estrutura do Projeto
 
